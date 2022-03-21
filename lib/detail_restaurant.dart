@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/restaurants.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+
 
 class RestaurantDetail extends StatelessWidget {
-  static const routeName = '/restaurants_list';
+  static const routeName = '/restaurants_detail';
 
   final Restaurant restaurant;
 
@@ -24,8 +24,6 @@ class RestaurantDetail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(restaurant.description),
-                  Divider(color: Colors.grey),
                   Text(
                     restaurant.name,
                     style: TextStyle(
@@ -35,12 +33,12 @@ class RestaurantDetail extends StatelessWidget {
                     ),
                   ),
                   Divider(color: Colors.grey),
-                  Text('Rate: ${restaurant.rating}'),
+                  Text('Rate: ${restaurant.city}'),
                   SizedBox(height: 10),
-                  Text('Location: ${restaurant.city}'),
+                  Text('Location: ${restaurant.rating}'),
                   Divider(color: Colors.grey),
                   Text(
-                    restaurant.id,
+                    restaurant.description,
                     style: TextStyle(
                       fontSize: 16,
                     ),
