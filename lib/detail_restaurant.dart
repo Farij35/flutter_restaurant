@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_restaurant/main.dart';
 import 'package:flutter_restaurant/restaurants.dart';
+
+import 'main.dart';
 
 class RestaurantDetail extends StatelessWidget {
   static const routeName = '/restaurants_detail';
@@ -54,7 +55,69 @@ class RestaurantDetail extends StatelessWidget {
                     ),
                   ),
                   Divider(color: Colors.grey),
-                  SizedBox(height: 10),
+                  Text('Foods Menu'),
+                  Column(
+                    children: restaurant.menus.foods.map((food) => Column(
+                      children: [
+                        Card(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                Icons.food_bank,
+                                size: 50,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Text(food.name),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    )).toList(),
+                  ),
+                  Divider(color: Colors.grey),
+                  Text('Drinks Menu'),
+                  Column(
+                    children: restaurant.menus.drinks.map((drink) => Column(
+                      children: [
+                        Card(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                Icons.local_drink,
+                                size: 50,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Text(drink.name),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    )).toList(),
+                  ),
                 ],
               ),
             )

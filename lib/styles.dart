@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final Color primaryColor = Color(0xFFFFFFFF);
-final Color secondaryColor = Color(0xFF6B38FB);
+final Color secondaryColor = Colors.orange;
 
 final TextTheme restoTextTheme = TextTheme(
   headline1: GoogleFonts.openSans(
