@@ -41,15 +41,17 @@ Widget _buildList(BuildContext context) {
     future: DefaultAssetBundle.of(context).loadString('assets/local_restaurant.json'),
     builder: (context, snapshot) {
       var jsonMap = jsonDecode(snapshot.data!);
-
       var restaurant = RestaurantData.fromJson(jsonMap);
-
-      return ListView.builder(
-        itemCount: restaurant.restaurants.length,
-        itemBuilder: (context, index){
-          return _buildRestaurantItem(context, restaurant.restaurants[index]);
-        },
-      );
+      if(snapshot.hasData != null){
+        return ListView.builder(
+          itemCount: restaurant.restaurants.length,
+          itemBuilder: (context, index){
+            return _buildRestaurantItem(context, restaurant.restaurants[index]);
+          },
+        );
+      } else {
+        throw const CircularProgressIndicator();
+      }
     },
   );
 }
@@ -69,7 +71,7 @@ class RestaurantsList extends StatelessWidget {
 Widget _buildAndroid(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
-      title: Text('Restaurant'),
+      title: const Text('Restaurant'),
     ),
     body: _buildList(context),
   );
@@ -77,7 +79,7 @@ Widget _buildAndroid(BuildContext context) {
 
 Widget _buildIos(BuildContext context) {
   return CupertinoPageScaffold(
-    navigationBar: CupertinoNavigationBar(
+    navigationBar: const CupertinoNavigationBar(
       middle: Text('News App'),
     ),
     child: _buildList(context),
