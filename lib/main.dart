@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_restaurant/detail_restaurant.dart';
 import 'package:flutter_restaurant/restaurants.dart';
+import 'package:flutter_restaurant/styles.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,11 +16,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Restaurants',
       theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+          primary: primaryColor,
+          onPrimary: Colors.black,
+          secondary: secondaryColor,
+        ),
+        textTheme: restoTextTheme,
       ),
-
       initialRoute: RestaurantsList.routeName,
       routes: {
         RestaurantsList.routeName: (context) => RestaurantsList(),
