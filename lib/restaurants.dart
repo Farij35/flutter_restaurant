@@ -4,6 +4,8 @@ RestaurantData restaurantDataFromJson(String str) => RestaurantData.fromJson(jso
 
 String restaurantDataToJson(RestaurantData data) => json.encode(data.toJson());
 
+
+
 class RestaurantData {
   RestaurantData({
     required this.restaurants,
@@ -86,6 +88,8 @@ class Drink {
   });
 
   String name;
+
+
 
   factory Drink.fromJson(Map<String, dynamic> json) => Drink(
     name: json["name"],

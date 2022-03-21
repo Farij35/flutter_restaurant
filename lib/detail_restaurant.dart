@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_restaurant/main.dart';
 import 'package:flutter_restaurant/restaurants.dart';
-
 
 class RestaurantDetail extends StatelessWidget {
   static const routeName = '/restaurants_detail';
@@ -14,13 +15,22 @@ class RestaurantDetail extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(restaurant.name),
+        leading: IconButton(
+          icon : Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => RestaurantsList()),
+            );
+          },
+        ),
       ),
       body:  SingleChildScrollView(
         child: Column(
           children: [
             Image.network(restaurant.pictureId),
             Padding(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -33,9 +43,9 @@ class RestaurantDetail extends StatelessWidget {
                     ),
                   ),
                   Divider(color: Colors.grey),
-                  Text('Rate: ${restaurant.city}'),
+                  Text('Location: ${restaurant.city}'),
                   SizedBox(height: 10),
-                  Text('Location: ${restaurant.rating}'),
+                  Text('Rate: ${restaurant.rating}'),
                   Divider(color: Colors.grey),
                   Text(
                     restaurant.description,
@@ -43,12 +53,13 @@ class RestaurantDetail extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
+                  Divider(color: Colors.grey),
                   SizedBox(height: 10),
                 ],
               ),
             )
           ],
-        )
+        ),
       ),
     );
   }
